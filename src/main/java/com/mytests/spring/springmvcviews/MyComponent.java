@@ -19,4 +19,9 @@ public class MyComponent {
     public String foo() {
         return MyComponent.id;
     }
+
+    public String getViewNameForTest08(){
+        return "test08";
+    }
+
 }
