@@ -28,16 +28,17 @@ public class ViewsResolveTestController {
         modelView.addObject("test00_arg", t00);
         return modelView;
     }
+    // view name as local variable used as ModelAndView constructor argument in method returning ModelAndView
     @RequestMapping(value = "/test02")
     public ModelAndView test02() {
-
-        //String viewName = "test02";  // not resolved as view name
-        //ModelAndView modelAndView = new ModelAndView(viewName);
-        ModelAndView modelAndView = new ModelAndView("test02");
+        String viewName = "test02";  // not resolved as view name
+        ModelAndView modelAndView = new ModelAndView(viewName);
+        //ModelAndView modelAndView = new ModelAndView("test02");
         modelAndView.addObject("compo",myComponent.foo());
         //modelAndView.addObject("compo","foo");
         return modelAndView;
     }
+    // view name as local variable used as return value in method returning String
     @RequestMapping("/test03")
     public String test03() {
         String viewname = "test03"; // not resolved as view name
@@ -59,9 +60,6 @@ public class ViewsResolveTestController {
         return "redirect:/test01/foo";
     }
 
-    
-    
-    
      // redirect to mapping defined in SpringMvcViewsApplication.addViewControllers():
     
     @RequestMapping("/test07")

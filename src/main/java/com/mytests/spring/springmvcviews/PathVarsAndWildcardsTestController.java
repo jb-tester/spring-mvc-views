@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PathVarsAndWildcardsTestController {
 
+    // multiple urls using same path var
     @RequestMapping({"/test05/p1/{foo}/bar/{foo}}","/test05/p2/{foo}"})
     public String test05(@PathVariable String foo) {
         System.out.println(foo);
         return "test05";
     }
-
+    // url using ant-style patterns
     @GetMapping(path="/test06/foo*/???-bar") // not processed correctly by Endpoints and HTTP Client; also find usages 
     public String test06() {
 
