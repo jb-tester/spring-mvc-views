@@ -1,0 +1,26 @@
+###
+GET http://localhost:8080/test08/hello
+
+<> 2021-04-23T222053.404.json
+<> 2021-04-23T221019.200.html
+<> 2021-04-23T220832.200.html
+
+###
+GET http://localhost:8080/test09/aaa
+
+<> 2021-04-23T221348.200.html
+
+###
+GET http://localhost:8080/test10/fooo
+
+<> 2021-04-23T222945.404.json
+
+###
+GET http://localhost:8080/test11/foo
+
+<> 2021-04-23T224521.200.html
+
+###
+GET http://localhost:8080/test06/foobla/bla-bar
+
+###
