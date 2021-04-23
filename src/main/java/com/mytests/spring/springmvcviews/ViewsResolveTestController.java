@@ -2,7 +2,10 @@ package com.mytests.spring.springmvcviews;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -48,7 +51,8 @@ public class ViewsResolveTestController {
 
         return new ModelAndView("test01");
     }
-
+    
+     // redirect test:
     @RequestMapping("/test04")
     public String test04() {
         
@@ -66,15 +70,34 @@ public class ViewsResolveTestController {
         return "redirect:/test0";
     }
     
-    /*@GetMapping("/test0")
-    public String test08() {
-        System.out.println("test08");
-        return "test08";
+    // redirect with pathvariables:
+    
+    @RequestMapping("/test10/{pv}")
+    public ModelAndView test10(@PathVariable String pv, ModelAndView mav){
+        mav.addObject("test10_attr",pv);
+        mav.setViewName("test10");
+        return mav;
     }
-    @RequestMapping("/test0")
-    public String test09() {
-        System.out.println("test09");
+    
+    @GetMapping("/test11/{pv}")
+    public String test11(){
+        return "redirect:/test10/{pv}";
+    }
+    
+     // forwarding
+    
+    @GetMapping("/test08")
+    public ModelAndView test08() {
+        System.out.println("test08");
+        ModelAndView modelAndView = new ModelAndView("forward:/test09");
+        modelAndView.addObject("test8_attr","from test08");
+        return modelAndView;
+    }
+    @RequestMapping("/test09")
+    public String test09(Model model) {
+        model.addAttribute("test9_attr", "from test09");
           return "test09";
-    }*/
+    }
+    
 }
 
