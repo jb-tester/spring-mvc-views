@@ -18,19 +18,26 @@ public class ViewsResolveTestController {
     @Autowired
     private MyComponent myComponent;
 
+    @RequestMapping("/test00")
+    public ModelAndView test00(ModelAndView modelView) {
+        String t00 = "aaa";
+        modelView.setViewName("test00");
+        modelView.addObject("test00_arg", t00);
+        return modelView;
+    }
     @RequestMapping(value = "/test02")
     public ModelAndView test02() {
 
-        String viewName = "test02";
-
-        ModelAndView modelAndView = new ModelAndView(viewName);
+        //String viewName = "test02";  // not resolved as view name
+        //ModelAndView modelAndView = new ModelAndView(viewName);
+        ModelAndView modelAndView = new ModelAndView("test02");
         modelAndView.addObject("compo",myComponent.foo());
         //modelAndView.addObject("compo","foo");
         return modelAndView;
     }
     @RequestMapping("/test03")
     public String test03() {
-        String viewname = "test03";
+        String viewname = "test03"; // not resolved as view name
         return viewname;
     }
 
