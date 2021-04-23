@@ -20,8 +20,5 @@ public class MyComponent {
         return MyComponent.id;
     }
 
-    public String getViewNameForTest08(){
-        return "test08";
-    }
 
 }
